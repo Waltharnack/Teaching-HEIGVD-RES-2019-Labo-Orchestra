@@ -26,7 +26,7 @@ function Musician(instrument) {
 
   Musician.prototype.play = function play() {
     const sound = {
-      instrument: this.instrument
+      sound: INSTRUMENTS[instrument],
     };
 
     const payload = JSON.stringify(sound);
