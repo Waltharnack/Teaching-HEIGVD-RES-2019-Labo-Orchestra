@@ -12,6 +12,15 @@ const protocol = require('./musician-protocol');
 // datagram socket
 const socket = dgram.createSocket('udp4');
 
+// define instruments and their sound
+const INSTRUMENTS = Object.freeze({
+  piano: 'ti-ta-ti',
+  trumpet: 'pouet',
+  flute: 'trulu',
+  violin: 'gzi-gzi',
+  drum: 'boum-boum',
+});
+
 function Musician(instrument) {
   this.instrument = instrument;
 
@@ -29,11 +38,14 @@ function Musician(instrument) {
       });
   };
 
-  // play each 500 ms
-  setInterval(this.play.bind(this), 500);
+  // play every second
+  setInterval(this.play.bind(this), 1000);
 }
 
 // take musician params from command line attributes
 const instrument = process.argv[2];
 
-const musician = new Musician(instrument);
+// check that the instrument exists
+if (INSTRUMENTS[instrument] != null) {
+  const musician = new Musician(instrument);
+}
