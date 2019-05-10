@@ -6,6 +6,9 @@ an assignated instrument
 // UDP Node.js dependency
 const dgram = require('dgram');
 
+// uuid
+const uuid = require('uuid');
+
 // protocol for musician
 const protocol = require('./musician-protocol');
 
@@ -26,6 +29,8 @@ function Musician(instrument) {
 
   Musician.prototype.play = function play() {
     const sound = {
+      uuid: uuid.v4(),
+      instrument: this.instrument,
       sound: INSTRUMENTS[instrument],
     };
 
