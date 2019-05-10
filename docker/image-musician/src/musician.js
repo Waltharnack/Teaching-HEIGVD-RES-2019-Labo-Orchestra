@@ -26,10 +26,11 @@ const INSTRUMENTS = Object.freeze({
 
 function Musician(instrument) {
   this.instrument = instrument;
+  this.uuid = uuid.v4();
 
   Musician.prototype.play = function play() {
     const sound = {
-      uuid: uuid.v4(),
+      uuid: this.uuid,
       instrument: this.instrument,
       sound: INSTRUMENTS[instrument],
     };
