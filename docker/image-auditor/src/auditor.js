@@ -37,6 +37,9 @@ tcpServer.on('connection', (tcpSocket) => {
   });
 
   tcpSocket.write(JSON.stringify(payload));
+
+  // close connection
+  tcpSocket.destroy();
 });
 
 // listen to musicians on multicast address
